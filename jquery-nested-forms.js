@@ -96,6 +96,9 @@
         // update the field indices
         var new_item_index = $parent.find(nested_form_selector).length + opts.index_offset;
         new_nested_form.find('input, textarea, select').each(function(){
+          if (typeof $(this).attr('name') === 'undefined' || $(this).attr('name') === false){
+              return;
+          }
           var name_nth_count = 0;
           $(this).attr('name', $(this).attr('name').replace(/\[\d+\]/g, function(str){
             name_nth_count++;
